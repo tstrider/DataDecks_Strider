@@ -44,4 +44,4 @@ references/image-backgrounds.md   using photographic or abstract backgrounds wit
 
 - The skill is a design and story layer on top of Claude's built-in PowerPoint mechanics; use both together.
 - The example brand and all sample figures are fictional.
-- License: choose one before publishing (MIT is a common permissive choice).
+- License: MIT

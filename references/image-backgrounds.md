@@ -18,7 +18,7 @@ Review the prompts (or let the user review them) before spending generation on t
 
 **Layer 2, generate, then mask to background weight.** Generate from the approved prompts using whatever image-generation capability is available in the environment (e.g. an imagegen skill). Then make each image recede so text stays legible:
 
-- **Darken/lighten toward the ground.** Composite a semi-transparent brand-color panel over the image (a deep-purple panel at 40-60% opacity for a dark deck, a white/light panel for a light deck), or reduce the image's own opacity over a solid brand fill. In pptxgenjs, place the image full-bleed, then a full-slide brand-color rectangle with `transparency: 45-60` on top; text goes above that. This is the "transparency mask" step, it's what turns a picture into a background.
+- **Darken/lighten toward the ground.** Composite a semi-transparent brand-color panel over the image (a dark brand-color panel at 40-60% opacity for a dark deck, a white or light panel for a light deck), or reduce the image's own opacity over a solid brand fill. In pptxgenjs, place the image full-bleed, then a full-slide brand-color rectangle with `transparency: 45-60` on top; text goes above that. This is the "transparency mask" step, it's what turns a picture into a background.
 - **Push contrast where the text sits.** If text is on the left, keep the mask heaviest on the left so type has a clean field. A per-slide gradient overlay (a gradient image, since pptxgenjs gradient fills aren't supported) does this well.
 - **Mask into the brand shape when appropriate.** If the brand has a signature shape (for example a semicircle, arch, or tab), crop or mask the image into that shape for hero and section slides so the imagery is unmistakably on brand.
 
@@ -28,8 +28,8 @@ Order in the build: generate all images -> apply masks -> then lay slides on top
 
 Image generation may be unavailable, or the brand may simply not need photography. Many strong brand systems lean heavily on **solid color panels and two-color gradients**, with imagery reserved for specific hero moments, so the color *is* the design. Prefer these when in doubt:
 
-- **Solid brand panel** (deep purple, royal blue, light blue-grey), the cleanest, most reliable ground. Most content slides want this.
-- **Two-color gradient**, applied as a gradient *image* set as the slide background (pptxgenjs doesn't support gradient fills). Generate a simple gradient PNG with any available image tool: warm (orange -> orange-red) or cool (royal blue -> deep purple).
+- **Solid brand panel** (the brand's dark, primary, and light ground colors), the cleanest, most reliable ground. Most content slides want this.
+- **Two-color gradient**, applied as a gradient *image* set as the slide background (pptxgenjs doesn't support gradient fills). Generate a simple gradient PNG with any available image tool: warm (orange -> orange-red) or cool (blue -> navy).
 - **Low-opacity brand pattern** (for example soft rings or shapes at ~15-25% opacity) behind title and divider slides only.
 
 A deck built entirely on solid and gradient grounds with strong typography and clean charts will out-perform one padded with mediocre generated images. Reach for photography when it adds meaning, not to fill space.

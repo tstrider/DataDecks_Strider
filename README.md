@@ -14,11 +14,21 @@ When installed, Claude uses this on any presentation task and applies a design d
 
 ## Install
 
-1. Download `DataDecks_Strider.skill` (or clone this repo and package the folder).
-2. In Claude, open the skill file and choose Save skill, or add it from your capabilities/skills settings. Availability depends on your plan and, for team or enterprise accounts, on your workspace admin.
-3. That is it. It triggers automatically on deck, slides, presentation, PowerPoint, or "turn this into slides" requests. You do not call it by name.
+**Claude app (claude.ai or the desktop app)**
 
-To build actual .pptx files, keep code execution and file creation enabled in the chat.
+1. Download [datadecks-strider.zip](https://github.com/tstrider/DataDecks_Strider/releases/latest/download/datadecks-strider.zip). Don't unzip it.
+2. In Claude, open Settings, then Capabilities, then Skills, and upload the zip. Availability depends on your plan and, for team or enterprise accounts, on your workspace admin.
+3. That is it. It triggers on its own for deck, slides, presentation, PowerPoint, or "turn this into slides" requests. You do not call it by name.
+
+**Claude Code**
+
+Clone this repo into your skills folder:
+
+```bash
+git clone https://github.com/tstrider/DataDecks_Strider ~/.claude/skills/datadecks-strider
+```
+
+To build actual .pptx files, keep code execution and file creation turned on. The layout engine needs `pptxgenjs` (Claude's PowerPoint tools include it; otherwise run `npm install pptxgenjs`).
 
 ## Use your own brand
 

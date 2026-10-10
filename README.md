@@ -2,6 +2,8 @@
 
 A Claude skill that makes PowerPoint decks look professionally designed: pixel-tight alignment, a clear story, clean finance and marketing charts, and consistent brand styling. Built for finance and FP&A teams who live in slides, and useful for any data-heavy deck.
 
+**[See it work in your browser](https://tstrider.github.io/DataDecks_Strider/)** before you install anything.
+
 ## What it does
 
 When installed, Claude uses this on any presentation task and applies a design discipline most AI-built decks skip:

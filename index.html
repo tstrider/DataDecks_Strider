@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DataDecks_Strider. A Claude skill for PowerPoint decks that line up.</title>
+<meta name="description" content="A Claude skill that builds data-heavy PowerPoint decks for finance and marketing on a 12-column grid. Free and open source.">
+<meta name="theme-color" content="#0D1423">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://thomaskstrider.com/datadecks/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DataDecks_Strider">
+<meta property="og:title" content="DataDecks_Strider">
+<meta property="og:description" content="A Claude skill that builds data-heavy PowerPoint decks for finance and marketing. Drag one handle to compare a slide built with it and without it.">
+<meta property="og:url" content="https://thomaskstrider.com/datadecks/">
+<meta property="og:image" content="https://thomaskstrider.com/datadecks/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A month-end scorecard slide. The left half is built with the skill. The right half is not.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DataDecks_Strider">
+<meta name="twitter:description" content="A Claude skill that builds data-heavy PowerPoint decks for finance and marketing.">
+<meta name="twitter:image" content="https://thomaskstrider.com/datadecks/assets/og.png">
+
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preload" as="image" href="assets/slides/northlight/a-scorecard.webp?v=6" type="image/webp">
+<link rel="stylesheet" href="assets/style.css?v=6">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="7" class="mk-bg"/><rect x="6" y="7" width="16" height="3.2" rx="1.2" class="mk-a"/><rect x="6" y="12.4" width="10" height="3.2" rx="1.2" class="mk-b"/><rect x="6" y="17.8" width="13" height="3.2" rx="1.2" class="mk-b"/></svg>
+      <span>DataDecks_Strider</span>
+    </a>
+    <nav class="nav-right" aria-label="Site">
+      <a class="nav-dl dl" href="https://github.com/tstrider/datadecks/releases/latest/download/datadecks-strider.zip"><span class="lg">Download the skill</span><span class="sm">Download</span></a>
+      <a class="nav-link gh" href="https://github.com/tstrider/datadecks" aria-label="DataDecks_Strider on GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1. hero: a real deck, and a handle that fixes the front slide -->
+  <section class="hero" id="hero">
+    <div class="glow glow--hero" aria-hidden="true"></div>
+    <div class="wrap hero-top">
+      <p class="eyebrow">A free skill you add to Claude, for PowerPoint decks</p>
+      <h1><span>AI decks look sloppy.</span> <span>Data Decks fixes them.</span></h1>
+      <p class="sub hero-sub">It makes Claude build every slide on one grid, so text, tables, and charts line up.</p>
+      <div class="cta">
+        <a class="btn btn--accent dl" href="https://github.com/tstrider/datadecks/releases/latest/download/datadecks-strider.zip">Download the skill</a>
+        <a class="btn btn--ghost" href="https://github.com/tstrider/datadecks">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="flow" id="flow">
+      <div class="flow-track" id="flow-track"></div>
+      <div class="flow-ui" id="flow-ui">
+        <span class="tag tag--a" aria-hidden="true">With the skill</span>
+        <span class="tag tag--b" aria-hidden="true">Without it</span>
+        <div class="pins" id="pins"></div>
+        <div class="cmp-line" id="cmp-line" role="slider" tabindex="0" aria-label="Share of the slide fixed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <span class="cmp-hint" aria-hidden="true">Drag</span>
+          <span class="cmp-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hud">
+      <div class="hud-bar" id="hud-bar" aria-hidden="true"></div>
+      <div class="hud-row">
+        <button type="button" class="round" id="flow-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="hud-mid" aria-live="polite">
+          <p class="hud-count"><b id="fx-n">8</b> <span id="fx-of">of 8 faults fixed</span></p>
+          <p class="hud-fix" id="hud-fix">Drag the handle left to see what it fixed.</p>
+        </div>
+        <button type="button" class="round" id="flow-next" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <p class="hud-note">Both are real .pptx files, built from the same made-up numbers. The faulty one was built on purpose.</p>
+    </div>
+  </section>
+
+  <!-- 2. the grid, seen through a lens -->
+  <section class="sec sec--dark" id="grid">
+    <div class="glow glow--grid" aria-hidden="true"></div>
+    <div class="wrap head">
+      <h2>Everything on a slide lines up on one grid.</h2>
+      <p class="sub"><span>12 columns and 0.6 inch margins.</span> <span>Move the lens to see the boxes in the .pptx file.</span></p>
+    </div>
+    <div class="lens" id="lens">
+      <div class="lens-bp" id="lens-bp" aria-hidden="true"></div>
+      <img class="lens-img" id="lens-img" data-s="a-scorecard" src="assets/slides/northlight/a-scorecard.webp?v=6" width="1600" height="900" loading="lazy" alt="">
+      <div class="lens-ring" id="lens-ring" aria-hidden="true"></div>
+    </div>
+    <div class="wrap ctl">
+      <div class="seg" role="group" aria-label="Which build" id="lens-seg">
+        <button type="button" class="seg-b is-on" data-mode="after" aria-pressed="true">With the skill</button>
+        <button type="button" class="seg-b" data-mode="before" aria-pressed="false">Without it</button>
+      </div>
+      <p class="stat" aria-live="polite"><b id="lens-n">0</b><span id="lens-of">of 9 left edges off the grid</span></p>
+    </div>
+  </section>
+
+  <!-- 3. the axis -->
+  <section class="sec sec--white" id="axis">
+    <div class="wrap head">
+      <h2>The chart axis can change the story.</h2>
+      <p class="sub"><span>The numbers stay the same as you drag.</span> <span>The skill starts a bar chart at zero and a waterfall chart just below its lowest bar.</span> <span>Drag the axis.</span></p>
+    </div>
+    <div class="wrap ax">
+      <div class="seg" role="group" aria-label="Chart" id="ax-mode">
+        <button type="button" class="seg-b is-on" data-ax="bar" aria-pressed="true">Bar chart</button>
+        <button type="button" class="seg-b" data-ax="fall" aria-pressed="false">Waterfall</button>
+      </div>
+      <div class="slide ax-slide" id="ax-frames"></div>
+      <div class="ax-ctl">
+        <input type="range" id="ax-range" min="0" max="6" step="1" value="2" aria-label="Where the axis starts">
+        <div class="ax-ticks" id="ax-ticks" aria-hidden="true"></div>
+      </div>
+      <p class="ax-say" aria-live="polite"><b id="ax-n">5%</b><span id="ax-l"></span></p>
+    </div>
+  </section>
+
+  <!-- 4. storyboard, build, check -->
+  <section class="sec sec--dark" id="story">
+    <div class="glow glow--story" aria-hidden="true"></div>
+    <div class="wrap head">
+      <h2>It writes the story before the slides.</h2>
+      <p class="sub"><span>You edit a plain-text storyboard.</span> <span>Then it builds the deck and inspects every slide.</span></p>
+    </div>
+    <div class="wrap st" id="st">
+      <ol class="st-phases" id="st-phases" aria-hidden="true">
+        <li><b>1</b><span>Storyboard</span></li>
+        <li><b>2</b><span>Build</span></li>
+        <li><b>3</b><span>Check</span></li>
+      </ol>
+      <div class="st-stage">
+        <div class="st-doc">
+          <p class="st-file" id="st-file">Slide 3 of 8</p>
+          <div class="st-rows" id="st-rows"></div>
+        </div>
+        <div class="st-out">
+          <div class="slide st-slide" id="st-slide">
+            <div class="st-pieces" id="st-pieces" aria-hidden="true"></div>
+            <img id="st-img" data-s="a-bridge" src="assets/slides/northlight/a-bridge.webp?v=6" width="1600" height="900" loading="lazy" alt="">
+            <i class="st-scan" aria-hidden="true"></i>
+            <div class="st-hl" id="st-hl" aria-hidden="true"></div>
+          </div>
+          <p class="st-check" id="st-check"></p>
+        </div>
+      </div>
+      <div class="st-nav" id="st-nav" role="tablist" aria-label="Slides in the deck"></div>
+    </div>
+  </section>
+
+  <!-- 5. brand -->
+  <section class="sec sec--light" id="brand">
+    <div class="wrap head">
+      <h2>One file sets your brand on every slide.</h2>
+      <p class="sub"><span>It is a short text file with your colors and fonts.</span> <span>Pick a brand.</span></p>
+      <div class="br-pick" id="br-pick" role="group" aria-label="Brand"></div>
+    </div>
+    <div class="wrap bento" id="bento"></div>
+    <div class="wrap ctl">
+      <a class="btn btn--ink dl" href="https://github.com/tstrider/datadecks/releases/latest/download/datadecks-strider.zip">Download the skill</a>
+      <p class="note">Northlight ships with the skill. Kelpline and Plumwick were made for this page. All three are fictional.</p>
+    </div>
+  </section>
+
+  <!-- 6. install -->
+  <section class="sec sec--dark install" id="install">
+    <div class="glow glow--install" aria-hidden="true"></div>
+    <div class="wrap head">
+      <h2><span>Install it.</span> <span><em>Ask for a deck.</em></span></h2>
+    </div>
+    <div class="wrap">
+      <ol class="k3">
+        <li><b>1</b><h3>Download the skill</h3><p>It is one zip file. Don't unzip it.</p></li>
+        <li><b>2</b><h3>Upload it to Claude</h3><p>Settings, then Capabilities, then Skills.</p></li>
+        <li><b>3</b><h3>Ask for a deck</h3><p>The skill loads on its own.</p></li>
+      </ol>
+      <div class="cta cta--install"><a class="btn btn--accent dl" href="https://github.com/tstrider/datadecks/releases/latest/download/datadecks-strider.zip">Download the skill</a></div>
+      <p class="fine">Whether you can upload a skill depends on your Claude plan and, on a team or enterprise account, on your workspace admin. To build .pptx files, keep code execution and file creation turned on.</p>
+
+      <div class="term">
+        <div class="term-bar"><span>Claude Code</span><button type="button" class="term-copy" id="copy">Copy</button></div>
+        <pre><code id="install-code">git clone https://github.com/tstrider/datadecks ~/.claude/skills/datadecks-strider</code></pre>
+      </div>
+      <p class="fine">The layout code uses the pptxgenjs library. If it is missing, run <code>npm install pptxgenjs</code>.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p>Free and open source under the MIT license.</p>
+    <nav aria-label="Project links">
+      <a href="https://github.com/tstrider/datadecks">GitHub</a>
+      <a href="https://github.com/tstrider/datadecks#readme">Read me</a>
+      <a href="https://github.com/tstrider/datadecks/blob/HEAD/SKILL.md">The skill file</a>
+      <a href="https://github.com/tstrider/datadecks/blob/HEAD/LICENSE">License</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/data.js?v=6" defer></script>
+<script src="assets/site.js?v=6" defer></script>
+</body>
+</html>
